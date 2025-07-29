@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
 
 export const metadata = {
@@ -11,5 +10,5 @@ export const metadata = {
 };
 
 export default function Home() {
-  return <Button>test</Button>;
+  return "";
 }
