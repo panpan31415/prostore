@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/constants";
-import { ShoppingCart, User2, UserIcon } from "lucide-react";
+import { ShoppingCart, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import ModeToggle from "./mode-toggle";
 const Header = () => {
   return (
     <header className="w-full border-b">
@@ -25,16 +26,18 @@ const Header = () => {
           </Link>
         </div>
         <span className="space-x-2">
+         <ModeToggle/>
           <Button asChild variant={"ghost"}>
             <Link href={"/cart"}>
-            <ShoppingCart/> Cart </Link>
+              <ShoppingCart /> Cart{" "}
+            </Link>
           </Button>
 
-          <Button asChild >
+          <Button asChild>
             <Link href={"/signin"}>
-            <UserIcon/> SignIn </Link>
+              <UserIcon /> SignIn{" "}
+            </Link>
           </Button>
-
         </span>
       </div>
     </header>
