@@ -9,6 +9,7 @@ export const metadata = {
   metadataBase:new URL(SERVER_URL)
 };
 
-export default function Home() {
-  return "";
+
+export default  function Home() {
+  return "ProStore";
 }
