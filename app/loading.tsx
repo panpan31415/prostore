@@ -2,7 +2,6 @@ import Image from "next/image";
 import loader from "@/assets/loader.gif";
 
 const LoadingPage = async () => {
-
   return (
     <div
       className="flex justify-center items-center h-screen w-screen

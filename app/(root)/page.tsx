@@ -1,4 +1,6 @@
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
+import sampleData from "@/db/sample-data";
+import ProductList from "@/components/shared/product/product-list";
 
 export const metadata = {
   title: {
@@ -11,5 +13,5 @@ export const metadata = {
 
 
 export default  function Home() {
-  return "ProStore";
+  return <ProductList data={sampleData.products} title="Newest Arrivals" limit={4}/>;
 }

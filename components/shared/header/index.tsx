@@ -1,12 +1,10 @@
-import { Button } from "@/components/ui/button";
 import { APP_NAME } from "@/lib/constants";
-import { ShoppingCart, UserIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ModeToggle from "./mode-toggle";
+import Menu from "./menu";
 const Header = () => {
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b px-4">
       <div className="flex justify-between items-center p-2">
         <div className="flex justify-start">
           <Link href="/" className="flex justify-start items-center">
@@ -25,20 +23,8 @@ const Header = () => {
             </span>
           </Link>
         </div>
-        <span className="space-x-2">
-         <ModeToggle/>
-          <Button asChild variant={"ghost"}>
-            <Link href={"/cart"}>
-              <ShoppingCart /> Cart{" "}
-            </Link>
-          </Button>
 
-          <Button asChild>
-            <Link href={"/signin"}>
-              <UserIcon /> SignIn{" "}
-            </Link>
-          </Button>
-        </span>
+        <Menu />
       </div>
     </header>
   );
