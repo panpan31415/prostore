@@ -12,7 +12,7 @@ export type Product = {
   isFeatured: boolean;
   banner: string;
 };
-const sampleData:{products:Product[]} = {
+const sampleData: { products: Product[] } = {
   products: [
     {
       name: "Polo Sporting Stretch Shirt",
@@ -63,7 +63,7 @@ const sampleData:{products:Product[]} = {
       numReviews: 3,
       stock: 0,
       isFeatured: false,
-      banner: null,
+      banner: "",
     },
     {
       name: "Calvin Klein Slim Fit Stretch Shirt",
@@ -80,7 +80,7 @@ const sampleData:{products:Product[]} = {
       numReviews: 5,
       stock: 10,
       isFeatured: false,
-      banner: null,
+      banner: "",
     },
     {
       name: "Polo Ralph Lauren Oxford Shirt",
@@ -97,7 +97,7 @@ const sampleData:{products:Product[]} = {
       numReviews: 18,
       stock: 6,
       isFeatured: false,
-      banner: null,
+      banner: "",
     },
     {
       name: "Polo Classic Pink Hoodie",
@@ -114,7 +114,7 @@ const sampleData:{products:Product[]} = {
       numReviews: 12,
       stock: 8,
       isFeatured: true,
-      banner: null,
+      banner: "",
     },
   ],
 };

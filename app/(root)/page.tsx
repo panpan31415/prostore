@@ -1,6 +1,6 @@
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants";
-import sampleData from "@/db/sample-data";
 import ProductList from "@/components/shared/product/product-list";
+import { getLatestProducts } from "@/lib/actions/product.actions";
 
 export const metadata = {
   title: {
@@ -8,10 +8,10 @@ export const metadata = {
     default: APP_NAME,
   },
   description: APP_DESCRIPTION,
-  metadataBase:new URL(SERVER_URL)
+  metadataBase: new URL(SERVER_URL),
 };
 
-
-export default  function Home() {
-  return <ProductList data={sampleData.products} title="Newest Arrivals" limit={4}/>;
+export default async function Home() {
+  const data = await getLatestProducts(10);
+  return <ProductList data={data} title="Newest Arrivals" limit={10} />;
 }
