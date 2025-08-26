@@ -1,7 +1,7 @@
 "use server";
 
+import { Product } from "@/types";
 import { PrismaClient } from "../generated/prisma";
-import { convert } from "../utils";
 
 export async function getLatestProducts(take: number) {
   const prisma = new PrismaClient();
@@ -11,11 +11,11 @@ export async function getLatestProducts(take: number) {
       createdAt: "desc",
     },
   });
-  const convertedData = data.map((product) => ({
+  const convertedData: Product[] = data.map((product) => ({
     ...product,
-    price: Number(product.price),
-    rating: Number(product.rating),
-    createdAt: product.createdAt.toISOString(),
+    price: String(product.price),
+    rating: String(product.rating),
+    createdAt: new Date(product.createdAt.toISOString()),
     banner: String(product.banner),
   }));
   // const convertedData = convert(data);
