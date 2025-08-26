@@ -8,3 +8,7 @@ export function cn(...inputs: ClassValue[]) {
 export function convert<T>(value: T): T {
   return JSON.parse(JSON.stringify(value));
 }
+
+export function formatNumberWithDecimal(number: number) {
+  return number.toFixed(2);
+}

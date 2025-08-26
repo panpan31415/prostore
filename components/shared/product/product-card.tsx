@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Product } from "@/db/sample-data";
-import { Star } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
 import ProductPrice from "./product-price";
+import { Product } from "@/types";
 
 type Props = {
   product: Product;
@@ -28,8 +28,7 @@ const ProductCard = ({ product }: Props) => {
         <div className="flex justify-between gap-4">
           <p>{product.rating} Stars </p>
           {product.stock > 0 ? (
-            <ProductPrice value={product.price} className="font-bold"/>
-           
+            <ProductPrice value={product.price + ""} className="font-bold" />
           ) : (
             <p className="text-destructive">Out Of Stock</p>
           )}
