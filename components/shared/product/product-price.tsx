@@ -6,7 +6,6 @@ type Props = {
 };
 
 const ProductPrice = ({ value, className }: Props) => {
-  console.log(typeof value);
   const [intValue, floatValue] = value.split(".");
   return (
     <p className={cn("text-2xl", className)}>
