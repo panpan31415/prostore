@@ -20,3 +20,12 @@ export async function getLatestProducts(take: number) {
   // const convertedData = convert(data);
   return convertedData;
 }
+
+export async function getProductBySlug(slug: string) {
+  const product = await prisma.product.findFirst({
+    where: {
+      slug,
+    },
+  });
+  return product;
+}
