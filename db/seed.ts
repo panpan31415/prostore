@@ -6,10 +6,17 @@ const prisma = new PrismaClient();
 async function main() {
   // delete all the data in product table
   await prisma.product.deleteMany();
+  await prisma.account.deleteMany();
+  await prisma.user.deleteMany();
+  await prisma.user.deleteMany();
   // create a product table with the data
   await prisma.product.createMany({
     data: sampleData.products,
   });
+  await prisma.user.createMany({
+    data: sampleData.users,
+  });
+
   console.log("Database seeded successfully!");
 }
 

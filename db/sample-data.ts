@@ -1,3 +1,4 @@
+import { hashSync } from "bcrypt-ts-edge";
 export type Product = {
   name: string;
   slug: string;
@@ -12,7 +13,31 @@ export type Product = {
   isFeatured: boolean;
   banner: string;
 };
-const sampleData: { products: Product[] } = {
+type User = {
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+};
+type SampleData = {
+  products: Product[];
+  users: User[];
+};
+const sampleData: SampleData = {
+  users: [
+    {
+      name: "John",
+      email: "admin@example.com",
+      password: hashSync("a random password", 10),
+      role: "admin",
+    },
+    {
+      name: "Jane",
+      email: "user@example.com",
+      password: hashSync("a random password", 10),
+      role: "user",
+    },
+  ],
   products: [
     {
       name: "Polo Sporting Stretch Shirt",
