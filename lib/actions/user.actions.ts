@@ -16,7 +16,11 @@ export async function signInWithCredentials(
       password: formData.get("password"),
     });
 
-    await signIn("credentials", user);
+    await signIn("credentials", {
+      email: user.email,
+      password: user.password,
+      redirectTo: (formData.get("callbackUrl") as string) || "/",
+    });
     return {
       success: true,
       message: "Signed in successfully",
