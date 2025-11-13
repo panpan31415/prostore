@@ -1,7 +1,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/shared/header";
 
-export default function RootLayout({
+export default function AuthLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -9,7 +9,7 @@ export default function RootLayout({
   return (
     <div className="flex h-screen flex-col ">
       <Header />
-      <main className="flex flex-1 "> {children}</main>
+      <main className="flex flex-1 wrap-normal px-4"> {children}</main>
       <Footer />
     </div>
   );
