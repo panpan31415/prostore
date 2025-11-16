@@ -3,7 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/db/prisma";
 import CredentialsProviders from "next-auth/providers/credentials";
 import { compareSync } from "bcrypt-ts-edge";
-
+import { NextResponse } from "next/server";
 export const config: NextAuthConfig = {
   // `pages` defines where NextAuth should redirect for auth-related screens.
   // Without it, users land on the library’s default UI instead of your custom one.
@@ -89,6 +89,25 @@ export const config: NextAuthConfig = {
         });
       }
       return token;
+    },
+    authorized: ({ request, auth }): any => {
+      // check for session cart cookie
+      if (!request.cookies.get("sessionCartId")) {
+        // generate new session cart id cookie
+        const sessionCartId = crypto.randomUUID();
+        console.log(sessionCartId);
+        // clone the request headers
+        const newRequestHeaders = new Headers(request.headers);
+        // create response
+        const response = NextResponse.next({
+          request: {
+            headers: newRequestHeaders,
+          },
+        });
+        response.cookies.set("sessionCartId", sessionCartId);
+        return response;
+      }
+      return true;
     },
   },
 };

@@ -1,7 +1,7 @@
+import AddToCardButton from "@/components/shared/product/add-to-cart-button";
 import ProductImages from "@/components/shared/product/product-images";
 import ProductPrice from "@/components/shared/product/product-price";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { getProductBySlug } from "@/lib/actions/product.actions";
 import { notFound } from "next/navigation";
@@ -62,8 +62,17 @@ const ProductDetailsPage = async (props: Props) => {
                 )}
               </div>
               {product.stock && (
-                <div className="items-center justify-center">
-                  <Button className="w-full">Add To Cart</Button>
+                <div className="flex items-center justify-center">
+                  <AddToCardButton
+                    item={{
+                      productId: product.id,
+                      name: product.name,
+                      slug: product.slug,
+                      qty: 1,
+                      image: product.images[0],
+                      price: product.price,
+                    }}
+                  />
                 </div>
               )}
             </CardContent>

@@ -5,9 +5,7 @@ import { formatNumberWithDecimal } from "./utils";
 
 const currency = z
   .string()
-  .refine((val) =>
-    /^DKK\d+(\.\d{2})?/.test(formatNumberWithDecimal(Number(val)))
-  );
+  .refine((val) => /^\d+(\.\d{2})?/.test(formatNumberWithDecimal(Number(val))));
 export const insertProductSchema = z.object({
   name: z.string().min(3, "Name must be at least 3 characters"),
   slug: z.string().min(3, "Slug must be at least 3 characters"),
@@ -49,7 +47,7 @@ export const cartItemSchema = z.object({
   slug: z.string().min(1, "slug is required"),
   qty: z.number().int().nonnegative("Quantity must be a positive number"),
   image: z.string().min(1, "Product image is required"),
-  prince: currency,
+  price: currency,
 });
 
 // cart schema
