@@ -5,7 +5,7 @@ import Menu from "./menu";
 const Header = () => {
   return (
     <header className="w-full border-b px-4">
-      <div className="flex justify-between items-center p-2">
+      <div className="flex justify-between items-center p-2 max-w-7xl mx-auto">
         <div className="flex justify-start">
           <Link href="/" className="flex justify-start items-center">
             <Image

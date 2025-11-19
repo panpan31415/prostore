@@ -7,10 +7,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen flex-col ">
+    <>
       <Header />
-      <main className="flex flex-1 "> {children}</main>
+      <main className=" max-w-7xl mx-auto h-screen"> {children}</main>
       <Footer />
-    </div>
+    </>
   );
 }

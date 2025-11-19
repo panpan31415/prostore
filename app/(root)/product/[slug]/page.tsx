@@ -20,7 +20,7 @@ const ProductDetailsPage = async (props: Props) => {
   const cart = await getMyCart();
 
   return (
-    <section>
+    <section className="mt-10">
       <div className="grid grid-cols-1 md:grid-cols-5">
         <div className="col-span-2">
           <ProductImages images={product.images} />

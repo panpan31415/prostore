@@ -48,10 +48,9 @@ export async function addItem(cartItem: CartItem) {
     });
 
     if (!product) {
-      throw new Error("Product Found");
+      throw new Error("Product Not Found");
     }
     if (!cart) {
-      console.log(54, userId);
       const newCart = insertCartSchema.parse({
         userId: userId,
         items: [item],
@@ -75,11 +74,19 @@ export async function addItem(cartItem: CartItem) {
       if (existItem) {
         // check stock
         if (product.stock < existItem.qty + 1) {
-          throw new Error("Not enough stock");
+          return {
+            success: false,
+            message: "Not enough stock",
+          };
         }
         existItem.qty = existItem.qty + 1;
       } else {
-        if (product.stock < 1) new Error("Not enough stock");
+        if (product.stock < 1) {
+          return {
+            success: false,
+            message: "Not enough stock",
+          };
+        }
         cart.items.push(cartItem);
       }
     }
