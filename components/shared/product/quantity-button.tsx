@@ -2,17 +2,28 @@ import { Button } from "@/components/ui/button";
 import { addItem, removeCartItem } from "@/lib/actions/cart.actions";
 import { CartItem } from "@/types";
 import { Loader, Minus, Plus } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import { toast } from "sonner";
 
 const QuantityButton = ({ item }: { item: CartItem }) => {
   const [isIncreasing, startIncrease] = useTransition();
   const [isDecreasing, startDecreasing] = useTransition();
+  const router = useRouter();
   const increaseQty = () => {
     startIncrease(async () => {
       const response = await addItem(item);
       if (response.success) {
-        toast.success(`${item.name} added`);
+        toast.success(`${item.name} added`, {
+          action: (
+            <Button
+              className="bg-primary   hover:bg-gray-400 hover:cursor-pointer"
+              onClick={() => router.push("/cart")}
+            >
+              Go to cart
+            </Button>
+          ),
+        });
       } else {
         toast.error(response.message);
       }
@@ -23,7 +34,16 @@ const QuantityButton = ({ item }: { item: CartItem }) => {
     startDecreasing(async () => {
       const response = await removeCartItem(item.productId);
       if (response.success) {
-        toast.success(`${item.name} removed`);
+        toast.success(`${item.name} removed`, {
+          action: (
+            <Button
+              className="bg-primary   hover:bg-gray-400 hover:cursor-pointer"
+              onClick={() => router.push("/cart")}
+            >
+              Go to cart
+            </Button>
+          ),
+        });
       } else {
         toast.error(response.message);
       }
